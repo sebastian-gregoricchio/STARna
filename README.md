@@ -9,7 +9,6 @@
 
 
 # STARna [<img src="https://raw.githubusercontent.com/sebastian-gregoricchio/STARna/main/resources/STARna_logo.svg" align="right" height = 250/>](https://sebastian-gregoricchio.github.io/STARna)
-*Fun fact: in italian slang when something "STARna" it means that it rocks.*
 
 <br>
 
