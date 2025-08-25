@@ -1,0 +1,21 @@
+name: STARna
+channels:
+  - bioconda
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - star
+  - samtools
+  - subread
+  - multiqc
+  - fastqc
+  - cutadapt
+  - pandas
+  - numpy
+  - more-itertools
+  - 'snakemake>=7.2*,<=8.10.0'
+  - pyasyncore
+  - async
+  - pip:
+      - pyasynchat
