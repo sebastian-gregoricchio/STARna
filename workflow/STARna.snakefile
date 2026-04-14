@@ -97,6 +97,8 @@ if not os.path.exists(os.path.join(config["genome_directory"], "transcriptInfo.t
             extra_param = config["extra_param_index"]
         threads:
             workflow.cores
+        log:
+            out = "genome_index_log.txt"
         shell:
             """
             printf '\033[1;36mGenerating the genome index...\\n\033[0m'
@@ -106,7 +108,7 @@ if not os.path.exists(os.path.join(config["genome_directory"], "transcriptInfo.t
             --genomeDir {params.genome_dir} \
             --genomeFastaFiles {input.genome} \
             --sjdbGTFfile {input.gtf} \
--           --sjdbOverhang {params.extra_param}
+            --sjdbOverhang {params.overhang} {params.extra_param} &> {log.out}
 
             printf '\033[1;36mGenome index done.\\n\033[0m'
             """
@@ -184,7 +186,7 @@ if (paired == True):
             mapping_results = expand(os.path.join("02_mapping/{SAMPLE}_{ext}"), ext = ["ReadsPerGene.out.tab", "SJ.out.tab"], allow_missing=True),
             bam = os.path.join("02_mapping/{SAMPLE}_Aligned.sortedByCoord.out.bam"),
             bai = os.path.join("02_mapping/{SAMPLE}_Aligned.sortedByCoord.out.bai"),
-            temp_folder = temp(directory("02_mapping/{SAMPLE}__STARtmp")),
+            #temp_folder = temp(directory("02_mapping/{SAMPLE}__STARtmp")),
             flagstat = os.path.join("02_mapping/flagstat/{SAMPLE}_flagstat.txt")
         params:
             genome_dir = config["genome_directory"],
@@ -227,7 +229,7 @@ else:
             mapping_results = expand(os.path.join("02_mapping/{SAMPLE}_{ext}"), ext = ["ReadsPerGene.out.tab", "SJ.out.tab"], allow_missing=True),
             bam = os.path.join("02_mapping/{SAMPLE}_Aligned.sortedByCoord.out.bam"),
             bai = os.path.join("02_mapping/{SAMPLE}_Aligned.sortedByCoord.out.bai"),
-            temp_folder = temp(directory("02_mapping/{SAMPLE}__STARtmp")),
+            #temp_folder = temp(directory("02_mapping/{SAMPLE}__STARtmp")),
             flagstat = os.path.join("02_mapping/flagstat/{SAMPLE}_flagstat.txt")
         params:
             genome_dir = config["genome_directory"],
