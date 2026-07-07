@@ -8,7 +8,6 @@ dependencies:
   - 'python >=3.8'
   - star
   - samtools
-  - subread
   - 'multiqc >=1.23'
   - fastqc
   - cutadapt
