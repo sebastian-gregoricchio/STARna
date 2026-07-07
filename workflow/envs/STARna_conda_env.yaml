@@ -14,8 +14,9 @@ dependencies:
   - pandas
   - numpy
   - more-itertools
-  - 'snakemake>=7.2*,<=8.10.0'
+  - 'snakemake-minimal>=7.24.0'
   - pyasyncore
   - async
+  - pip
   - pip:
       - pyasynchat
